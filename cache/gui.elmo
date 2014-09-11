@@ -29,31 +29,58 @@ Elm.Gui.make = function (_elm) {
    var Time = Elm.Time.make(_elm);
    var Window = Elm.Window.make(_elm);
    var _op = {};
-   var display = F2(function (_v0,
-   _v1) {
+   var displayUser = F2(function (_v0,
+   user) {
       return function () {
-         switch (_v1.ctor)
+         switch (_v0.ctor)
          {case "_Tuple2":
-            return function () {
-                 switch (_v0.ctor)
-                 {case "_Tuple2":
-                    return A3(Graphics.Collage.collage,
-                      _v0._0,
-                      _v0._1,
-                      _L.fromArray([A2(Graphics.Collage.move,
-                      {ctor: "_Tuple2"
-                      ,_0: Basics.toFloat(_v1._0)
-                      ,_1: Basics.toFloat(_v1._1)},
-                      A2(Graphics.Collage.filled,
-                      Color.red,
-                      Graphics.Collage.circle(50)))]));}
-                 _E.Case($moduleName,
-                 "on line 21, column 23 to 89");
-              }();}
+            return A2(Graphics.Collage.move,
+              {ctor: "_Tuple2"
+              ,_0: Basics.toFloat(user.x - (_v0._0 / 2 | 0))
+              ,_1: Basics.toFloat((_v0._1 / 2 | 0) - user.y)},
+              A2(Graphics.Collage.filled,
+              user.color,
+              Graphics.Collage.circle(50)));}
          _E.Case($moduleName,
-         "on line 21, column 23 to 89");
+         "on line 23, column 26 to 125");
       }();
    });
+   var display = F2(function (_v4,
+   users) {
+      return function () {
+         switch (_v4.ctor)
+         {case "_Tuple2":
+            return A3(Graphics.Collage.collage,
+              _v4._0,
+              _v4._1,
+              _L.fromArray([A2(Graphics.Collage.move,
+                           {ctor: "_Tuple2",_0: 0,_1: 0},
+                           A2(Graphics.Collage.filled,
+                           Color.black,
+                           A2(Graphics.Collage.rect,
+                           Basics.toFloat(_v4._0),
+                           Basics.toFloat(_v4._1))))
+                           ,Graphics.Collage.group(A2(List.map,
+                           displayUser({ctor: "_Tuple2"
+                                       ,_0: _v4._0
+                                       ,_1: _v4._1}),
+                           users))]));}
+         _E.Case($moduleName,
+         "on line 22, column 23 to 132");
+      }();
+   });
+   var main = A2(Signal._op["~"],
+   A2(Signal._op["<~"],
+   display,
+   Window.dimensions),
+   Signal.constant(_L.fromArray([{_: {}
+                                 ,color: Color.red
+                                 ,x: 200
+                                 ,y: 400}
+                                ,{_: {}
+                                 ,color: Color.blue
+                                 ,x: 300
+                                 ,y: 300}])));
    var posFromModel = Native.Ports.portIn("posFromModel",
    Native.Ports.incomingSignal(function (v) {
       return _U.isJSArray(v) ? _L.fromArray(v.map(function (v) {
@@ -93,17 +120,11 @@ Elm.Gui.make = function (_elm) {
          "on line 9, column 38 to 50");
       }();
    };
-   var main = A2(Signal._op["~"],
-   A2(Signal._op["<~"],
-   display,
-   Window.dimensions),
-   A2(Signal._op["<~"],
-   listToTuple,
-   posFromModel));
    _elm.Gui.values = {_op: _op
                      ,listToTuple: listToTuple
                      ,tupleToList: tupleToList
                      ,main: main
-                     ,display: display};
+                     ,display: display
+                     ,displayUser: displayUser};
    return _elm.Gui.values;
 };
