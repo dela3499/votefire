@@ -3,7 +3,6 @@ module Gui where
 import Window
 import Mouse
 
-
 -- Create simple type conversions 
 listToTuple : [Int] -> (Int,Int)
 listToTuple (first::second::rest) = (first,second)

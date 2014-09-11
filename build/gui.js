@@ -45,10 +45,10 @@ Elm.Gui.make = function (_elm) {
                       Color.blue,
                       Graphics.Collage.circle(50)));}
                  _E.Case($moduleName,
-                 "on line 22, column 27 to 110");
+                 "on line 21, column 27 to 110");
               }();}
          _E.Case($moduleName,
-         "on line 22, column 27 to 110");
+         "on line 21, column 27 to 110");
       }();
    });
    var display = F2(function (_v8,
@@ -77,10 +77,10 @@ Elm.Gui.make = function (_elm) {
                                    ,_0: _v9._0
                                    ,_1: _v9._1})]));}
                  _E.Case($moduleName,
-                 "on line 21, column 23 to 118");
+                 "on line 20, column 23 to 118");
               }();}
          _E.Case($moduleName,
-         "on line 21, column 23 to 118");
+         "on line 20, column 23 to 118");
       }();
    });
    var posFromModel = Native.Ports.portIn("posFromModel",
@@ -96,7 +96,7 @@ Elm.Gui.make = function (_elm) {
             return _L.fromArray([_v16._0
                                 ,_v16._1]);}
          _E.Case($moduleName,
-         "on line 12, column 21 to 26");
+         "on line 11, column 21 to 26");
       }();
    };
    var posFromView = Native.Ports.portOut("posFromView",
@@ -119,7 +119,7 @@ Elm.Gui.make = function (_elm) {
                         ,_1: _v20._1._0};}
               break;}
          _E.Case($moduleName,
-         "on line 9, column 38 to 50");
+         "on line 8, column 38 to 50");
       }();
    };
    var main = A2(Signal._op["~"],
