@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script src='elm-runtime.js'></script>
+    <script src='/build/gui.js'></script>
+  </head>
+  <body>
+    <script>
+      // Initialize Elm module and incoming port
+      var view = Elm.fullscreen(Elm.Gui, { posFromModel: [0,0] });
+      
+      // Set up firebase reference
+      var myDataRef = new Firebase('https://amber-fire-5807.firebaseio.com/pos');
+      
+      // Send new firebase data to Elm module
+      myDataRef.on('value', function(snapshot) {
+        view.ports.posFromModel.send(snapshot.val());
+      });
+
+      // Send new data to firebase when user moves mouse (from Elm module)
+      view.ports.posFromView.subscribe(function (data) {
+        myDataRef.set(data);
+      });
+    </script>
+  </body>
+</html>
