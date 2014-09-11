@@ -17,7 +17,6 @@ port posFromView : Signal [Int] -- outgoing port
 port posFromView = tupleToList <~ Mouse.position
 
 -- Display circle at cursor position
--- main = display <~ Window.dimensions ~ (listToTuple <~ posFromModel)
-main = display <~ Window.dimensions ~ (constant [{x= 200, y=400, color= red}, {x= 300, y=300, color= blue}]) 
-display (w,h) users = collage w h [move (0,0) (filled black (rect (toFloat w) (toFloat h))), group (map (displayUser (w,h)) users)]
-displayUser (w,h) user = move (toFloat (user.x - (w `div` 2)), toFloat ((h `div` 2) - user.y)) (filled user.color (circle 50))
+main = display <~ Window.dimensions ~ (listToTuple <~ posFromModel)
+display (w,h) (x,y) = collage w h [move (0,0) (filled black (rect (toFloat w) (toFloat h))), displayUser (w,h) (x,y)]
+displayUser (w,h) (x,y) = move (toFloat (x - (w `div` 2)), toFloat ((h `div` 2) - y)) (filled blue (circle 50))
