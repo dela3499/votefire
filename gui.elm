@@ -16,5 +16,6 @@ port posFromModel : Signal [Int] -- incoming port
 port posFromView : Signal [Int] -- outgoing port
 port posFromView = tupleToList <~ Mouse.position
 
+-- Display circle at cursor position
 main = display <~ Window.dimensions ~ (listToTuple <~ posFromModel)
 display (w,h) (x,y) = collage w h [move (toFloat x, toFloat y) (filled red (circle 50))]

@@ -48,10 +48,10 @@ Elm.Gui.make = function (_elm) {
                       Color.red,
                       Graphics.Collage.circle(50)))]));}
                  _E.Case($moduleName,
-                 "on line 20, column 23 to 89");
+                 "on line 21, column 23 to 89");
               }();}
          _E.Case($moduleName,
-         "on line 20, column 23 to 89");
+         "on line 21, column 23 to 89");
       }();
    });
    var posFromModel = Native.Ports.portIn("posFromModel",
